@@ -1,0 +1,20 @@
+#!/bin/bash
+
+arq=$1
+
+ltotal=$(cat $arq |wc -l)
+parte=$(($ltotal/10))
+
+aux2=$(($parte+1))
+cont=0
+
+
+while [ $cont -lt $aux2 ]; do
+	cont+=1
+	aux1=$(($cont*10))
+	echo " $(cat $arq | head -$aux1 | tail -10)"
+	read -p " " utilitario
+	case $utilitario in
+		"\n") echo "proximo"
+	esac
+done
